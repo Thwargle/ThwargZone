@@ -14,28 +14,20 @@
 
 ---
 
-## 🆕 Recent Updates
-
-### Version 2.1 - Navigation Flow & Code Cleanup
-- **Smart Navigation Flow**: When editing a custom server, automatically closes GameLauncher and navigates to ServerSelection
-- **Real-Time Updates**: Server changes are immediately reflected across all open windows
-- **Clean Codebase**: Removed all diagnostic/debug logging for production-ready code
-- **Enhanced User Experience**: Seamless workflow when managing custom servers
-
-### Version 2.0 - UI Redesign & .NET 8 Upgrade
-- **Upgraded to .NET 8.0**: Modern framework with Long-Term Support
-- **Unified Account Management**: Replaced separate username/password dialogs with a single, elegant interface
-- **Enhanced Custom Server Management**: Comprehensive interface with individual edit/remove buttons for each server
-- **Classic Windows 95/98 Design**: Authentic recessed borders and form elements for nostalgic appeal
-- **Improved Navigation**: Streamlined menu structure with consolidated options
-- **Keyboard Navigation**: Full keyboard support with Enter/Escape key handling
-- **Background Themes**: Castle-themed backgrounds for enhanced visual appeal
-
 ---
 
 ## 📖 Overview
 
-ThwargZone is a feature-rich game launcher for Asheron's Call that brings back the classic MSN Gaming Zone experience. It provides an easy-to-use interface for connecting to multiple servers, managing game accounts, and launching the game with optional Decal plugin injection.
+ThwargZone is a feature-rich game launcher for Asheron's Call that brings back the classic MSN Gaming Zone experience. Built on .NET 8.0 with modern Long-Term Support, it provides an easy-to-use interface for connecting to multiple servers, managing game accounts, and launching the game with optional Decal plugin injection.
+
+**Key Highlights:**
+- **Modern .NET 8.0 Framework**: Built with the latest .NET technology for reliability and performance
+- **Unified Account Management**: Single, elegant interface for managing both username and password
+- **Smart Navigation Flow**: Seamless workflow with real-time updates across all windows
+- **Classic Windows 95/98 Design**: Authentic recessed borders and form elements for nostalgic appeal
+- **Enhanced Custom Server Management**: Comprehensive interface with individual edit/remove buttons
+- **Keyboard Navigation**: Full keyboard support with Enter/Escape key handling
+- **Background Themes**: Castle-themed backgrounds that change based on server type
 
 ---
 
@@ -55,13 +47,14 @@ ThwargZone is a feature-rich game launcher for Asheron's Call that brings back t
 - **Server Details**: View server descriptions and connection information
 
 ### 🛠️ Custom Server Management
-- **Manage Custom Servers**: Comprehensive interface for managing your custom servers
+- **Comprehensive Management Interface**: Unified window for managing all your custom servers
   - Add new custom servers with name, host, port, type, and description
-  - Edit existing custom servers with pre-filled information
-  - Remove custom servers with individual remove buttons
-  - View all custom servers in a unified management window
-- **Smart Navigation**: When editing a custom server, automatically navigates back to ServerSelection
-- **Real-Time Updates**: Changes are immediately reflected across all open windows
+  - Edit existing custom servers with pre-filled information and individual edit buttons
+  - Remove custom servers with individual remove buttons for each server
+  - View all custom servers in a scrollable list with full details
+- **Smart Navigation Flow**: When editing a custom server, automatically closes GameLauncher and navigates to ServerSelection
+- **Real-Time Updates**: Server changes are immediately reflected across all open windows
+- **Enhanced User Experience**: Seamless workflow when managing custom servers
 - **Persistent Storage**: Custom servers are saved locally in `customServers.xml`
 
 ### 🔧 Configuration Options
@@ -90,12 +83,13 @@ ThwargZone is a feature-rich game launcher for Asheron's Call that brings back t
 
 ### 🎨 User Interface
 - **Retro MSN Gaming Zone Design**: Authentic throwback to the original MSN Gaming Zone interface
+- **Classic Windows 95/98 Design**: Authentic recessed borders and form elements for nostalgic appeal
 - **Custom Title Bars**: Windows XP-style title bars with minimize and close buttons
 - **Draggable Windows**: Click and drag windows from anywhere on the background
 - **Animated Graphics**: Authentic animated GIF support for nostalgic visual elements
 - **Window Position Memory**: Automatically remembers window positions between sessions
-- **Classic Form Design**: Windows 95/98-style recessed borders and form elements
-- **Unified Account Management**: Single window for username and password configuration
+- **Unified Account Management**: Single, elegant interface for managing both username and password
+- **Streamlined Navigation**: Consolidated menu structure with improved user flow
 
 ### 📊 Data Sources
 - **Server List**: Fetched from `https://raw.githubusercontent.com/acresources/serverslist/master/Servers.xml`
@@ -309,12 +303,13 @@ If Decal injection fails:
 ## 🏗️ Technical Details
 
 ### Built With
-- **.NET 8.0** - Modern .NET framework with Long-Term Support (LTS)
+- **.NET 8.0** - Modern .NET framework with Long-Term Support (LTS) for reliability and performance
 - **WPF (Windows Presentation Foundation)** - UI framework
 - **AnimatedImage.Wpf** - Animated GIF support
 - **Newtonsoft.Json** - JSON parsing for player counts
 - **Custom Win32 Injection** - Decal DLL injection
 - **System.Drawing.Common 8.0.0** - Enhanced graphics support
+- **Production-Ready Codebase** - Clean, optimized code with all diagnostic/debug logging removed
 
 ### Architecture
 - **MVVM Pattern** - Clean separation of UI and logic
