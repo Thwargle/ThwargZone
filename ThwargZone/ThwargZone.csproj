@@ -1,0 +1,136 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AnimatedImage.Wpf" Version="2.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\002723760006_GC.jpg" />
+    <None Remove="Assets\00292MO0026_LG.gif" />
+    <None Remove="Assets\1.ico" />
+    <None Remove="Assets\ac_ltype.gif" />
+    <None Remove="Assets\ac_mini_bg.gif" />
+    <None Remove="Assets\ac_zlogo.gif" />
+    <None Remove="Assets\BANNERAD.gif" />
+    <None Remove="Assets\bar.gif" />
+    <None Remove="Assets\bg_game.gif" />
+    <None Remove="Assets\bk_arrow.gif" />
+    <None Remove="Assets\CastleBackground.jpg" />
+    <None Remove="Assets\chat.gif" />
+    <None Remove="Assets\clear.gif" />
+    <None Remove="Assets\Combined.gif" />
+    <None Remove="Assets\dnlds.gif" />
+    <None Remove="Assets\eyca01.gif" />
+    <None Remove="Assets\eyca02.gif" />
+    <None Remove="Assets\eyca03.gif" />
+    <None Remove="Assets\gamingzone.gif" />
+    <None Remove="Assets\GamingZoneLogo.gif" />
+    <None Remove="Assets\HDGC0002_C6.GIF" />
+    <None Remove="Assets\head.gif" />
+    <None Remove="Assets\Icon15.ico" />
+    <None Remove="Assets\logo.gif" />
+    <None Remove="Assets\menucurv.gif" />
+    <None Remove="Assets\MSN_Gaming_Zone_logo.jpg" />
+    <None Remove="Assets\news.gif" />
+    <None Remove="Assets\newwin.gif" />
+    <None Remove="Assets\nwsltr.gif" />
+    <None Remove="Assets\Play.jpg" />
+    <None Remove="Assets\Play_Clicked.jpg" />
+    <None Remove="Assets\Play_Disabled.jpg" />
+    <None Remove="Assets\Play_Hovered.jpg" />
+    <None Remove="Assets\PvE_Background.bmp" />
+    <None Remove="Assets\PvP_Background.bmp" />
+    <None Remove="Assets\splash.gif" />
+    <None Remove="Assets\stories.gif" />
+    <None Remove="Assets\ThwargLogo.ico" />
+    <None Remove="Assets\tips.gif" />
+    <None Remove="Assets\turbinelogo.gif" />
+    <None Remove="Assets\ZONELOGO.bmp" />
+    <None Remove="UtilityCode\injector.dll" />
+    <None Remove="UtilityCode\VCS5.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\002723760006_GC.jpg" />
+    <Resource Include="Assets\00292MO0026_LG.gif" />
+    <Resource Include="Assets\1.ico" />
+    <Resource Include="Assets\ac_ltype.gif" />
+    <Resource Include="Assets\ac_mini_bg.gif" />
+    <Resource Include="Assets\ac_zlogo.gif" />
+    <Resource Include="Assets\BANNERAD.gif" />
+    <Resource Include="Assets\bar.gif" />
+    <Resource Include="Assets\bg_game.gif" />
+    <Resource Include="Assets\bk_arrow.gif" />
+    <Resource Include="Assets\CastleBackground.jpg" />
+    <Resource Include="Assets\chat.gif" />
+    <Resource Include="Assets\clear.gif" />
+    <Resource Include="Assets\Combined.gif" />
+    <Resource Include="Assets\dnlds.gif" />
+    <Resource Include="Assets\eyca01.gif" />
+    <Resource Include="Assets\eyca02.gif" />
+    <Resource Include="Assets\eyca03.gif" />
+    <Resource Include="Assets\gamingzone.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\GamingZoneLogo.gif" />
+    <Resource Include="Assets\HDGC0002_C6.GIF" />
+    <Resource Include="Assets\head.gif" />
+    <Resource Include="Assets\Icon15.ico" />
+    <Resource Include="Assets\logo.gif" />
+    <Resource Include="Assets\menucurv.gif" />
+    <Resource Include="Assets\MSN_Gaming_Zone_logo.jpg" />
+    <Resource Include="Assets\news.gif" />
+    <Resource Include="Assets\newwin.gif" />
+    <Resource Include="Assets\nwsltr.gif" />
+    <Resource Include="Assets\Play.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Play_Clicked.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Play_Disabled.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Play_Hovered.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\PvE_Background.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\PvP_Background.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\splash.gif" />
+    <Resource Include="Assets\stories.gif" />
+    <Resource Include="Assets\ThwargLogo.ico" />
+    <Resource Include="Assets\tips.gif" />
+    <Resource Include="Assets\turbinelogo.gif" />
+    <Resource Include="Assets\ZONELOGO.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

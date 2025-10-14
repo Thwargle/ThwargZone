@@ -1,0 +1,170 @@
+<Window x:Class="ThwargZone.AddCustomServerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Custom Server" Height="450" Width="600"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="False"
+        Icon="/Assets/1.ico">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Custom Title Bar -->
+        <Border Grid.Row="0" Background="#010880" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Icon and Title -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="5,0,0,0">
+                    <Image Source="/Assets/1.ico" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="TitleText" Text="Add Custom Server" 
+                               Foreground="White" FontWeight="Bold" FontSize="12"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                
+                <!-- Window Buttons -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0,0,5,0">
+                    <!-- Minimize Button -->
+                    <Button Width="16" Height="16" Margin="2,0,0,0" Click="Minimize_Click" Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#ECE9D8"/>
+                                <Setter Property="BorderBrush" Value="#003C74"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="0" ShadowDepth="1" 
+                                                                      Direction="315" Color="White" Opacity="0.8"/>
+                                                </Border.Effect>
+                                                <Grid>
+                                                    <Rectangle Width="6" Height="2" Fill="Black" 
+                                                               VerticalAlignment="Center" Margin="0,1,0,0"/>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#F6F4EC"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#D4D0C8"/>
+                                                    <Setter TargetName="border" Property="BorderBrush" Value="#003C74"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    
+                    <!-- Close Button -->
+                    <Button Width="16" Height="16" Margin="2,0,0,0" Click="Close_Click" Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#ECE9D8"/>
+                                <Setter Property="BorderBrush" Value="#003C74"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="0" ShadowDepth="1" 
+                                                                      Direction="315" Color="White" Opacity="0.8"/>
+                                                </Border.Effect>
+                                                <Grid>
+                                                    <Path Data="M0,0 L6,6 M6,0 L0,6" Stroke="Black" StrokeThickness="1.2"
+                                                          HorizontalAlignment="Center" 
+                                                          VerticalAlignment="Center"
+                                                          Margin="0,0,0,0"/>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#F6F4EC"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#D4D0C8"/>
+                                                    <Setter TargetName="border" Property="BorderBrush" Value="#003C74"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Background="#908E91">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="Server Name:" FontWeight="Bold" FontSize="14" Foreground="White" Margin="0,0,0,5"/>
+                <TextBox x:Name="ServerNameTextBox" Grid.Row="1" Margin="0,0,0,15" Height="30"/>
+                
+                <TextBlock Grid.Row="2" Text="Server Host:" FontWeight="Bold" FontSize="14" Foreground="White" Margin="0,0,0,5"/>
+                <TextBox x:Name="ServerHostTextBox" Grid.Row="3" Margin="0,0,0,15" Height="30"/>
+                
+                <TextBlock Grid.Row="4" Text="Server Port:" FontWeight="Bold" FontSize="14" Foreground="White" Margin="0,0,0,5"/>
+                <TextBox x:Name="ServerPortTextBox" Grid.Row="5" Margin="0,0,0,15" Height="30"/>
+                
+                <TextBlock Grid.Row="6" Text="Server Type:" FontWeight="Bold" FontSize="14" Foreground="White" Margin="0,0,0,5"/>
+                <ComboBox x:Name="ServerTypeComboBox" Grid.Row="7" Margin="0,0,0,15" Height="30">
+                    <ComboBoxItem Content="PvE"/>
+                    <ComboBoxItem Content="PK"/>
+                    <ComboBoxItem Content="PvP"/>
+                    <ComboBoxItem Content="Test"/>
+                </ComboBox>
+                
+                <TextBlock Grid.Row="8" Text="Description:" FontWeight="Bold" FontSize="14" Foreground="White" Margin="0,0,0,5"/>
+                <TextBox x:Name="DescriptionTextBox" Grid.Row="9" Margin="0,0,0,15" Height="80" 
+                         TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+            </Grid>
+        </Grid>
+        
+        <!-- Buttons -->
+        <Grid Grid.Row="2" Background="#908E91">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="AddServerButton" Content="Add Server" Width="100" Height="30" Margin="10,0,10,0" 
+                        Click="AddServer_Click" Background="#F98107" Foreground="#43081C" 
+                        FontWeight="Bold" BorderThickness="0" IsDefault="True"/>
+                <Button Content="Cancel" Width="100" Height="30" Margin="10,0,10,0" 
+                        Click="Cancel_Click" Background="#CCCCCC" Foreground="Black" 
+                        FontWeight="Bold" BorderThickness="0" IsCancel="True"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,265 @@
+<Window x:Class="ThwargZone.GameLauncher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThwargZone"
+        xmlns:anim="https://github.com/whistyun/AnimatedImage.Wpf"
+        mc:Ignorable="d"
+        Title="ThwargZone for Asheron's Call" Height="402" Width="640" 
+        WindowStyle="None" ResizeMode="NoResize"
+        AllowsTransparency="False"
+        Icon="/Assets/Icon15.ico">
+    <Grid Background="Black">
+        <Grid.Resources>
+            <ImageBrush x:Key="PlayButton" ImageSource="/Assets/Play.jpg" />
+            <ImageBrush x:Key="PlayButtonHover" ImageSource="/Assets/Play_Hovered.jpg" />
+            <ImageBrush x:Key="PlayButtonClicked" ImageSource="/Assets/Play_Clicked.jpg" />
+
+            <!-- Slim transparent scrollbar style -->
+            <Style x:Key="SlimTransparentScrollBar" TargetType="ScrollBar">
+                <Setter Property="Width" Value="8"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Opacity" Value="0.3"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ScrollBar">
+                            <Grid>
+                                <Track Name="PART_Track" IsDirectionReversed="True">
+                                    <Track.Thumb>
+                                        <Thumb>
+                                            <Thumb.Style>
+                                                <Style TargetType="Thumb">
+                                                    <Setter Property="Background" Value="#999999"/>
+                                                    <Setter Property="BorderThickness" Value="0"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="Thumb">
+                                                                <Border Background="{TemplateBinding Background}"
+                                                                        CornerRadius="4"/>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="#CCCCCC"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Thumb.Style>
+                                        </Thumb>
+                                    </Track.Thumb>
+                                </Track>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TransparentScrollViewer" TargetType="ScrollViewer">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ScrollViewer">
+                            <Grid>
+                                <ScrollContentPresenter Margin="0,0,10,0" />
+                                <ScrollBar x:Name="PART_VerticalScrollBar"
+                                          Style="{StaticResource SlimTransparentScrollBar}"
+                                          Orientation="Vertical"
+                                          HorizontalAlignment="Right"
+                                          Maximum="{TemplateBinding ScrollableHeight}"
+                                          ViewportSize="{TemplateBinding ViewportHeight}"
+                                          Value="{TemplateBinding VerticalOffset}"
+                                          Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Image-only button template -->
+            <Style x:Key="ImageOnlyButton" TargetType="Button">
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="Focusable" Value="False"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Background" Value="{StaticResource PlayButton}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource PlayButtonHover}" />
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="{StaticResource PlayButtonClicked}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22px"></RowDefinition>
+            <RowDefinition Height="20px"></RowDefinition>
+            <RowDefinition Height="42px"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- Custom Title Bar -->
+        <Border Grid.Row="0" Background="#010880" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Icon and Title -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="5,0,0,0">
+                    <Image Source="/Assets/Icon15.ico" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="TitleText" 
+                               Text="ThwargZone for Asheron's Call" 
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Window Buttons -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,5,0">
+                    <!-- Minimize Button -->
+                    <Button Width="16" Height="16"
+                            Click="MinimizeButton_Click"
+                            Cursor="Hand"
+                            Margin="0,0,2,0">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#ECE9D8"/>
+                                <Setter Property="BorderBrush" Value="#003C74"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="0" ShadowDepth="1" 
+                                                                      Direction="315" Color="White" Opacity="0.8"/>
+                                                </Border.Effect>
+                                                <Grid>
+                                                    <Rectangle Width="6" Height="2" Fill="Black" 
+                                                               VerticalAlignment="Center" Margin="0,1,0,0"/>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#F6F4EC"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#D4D0C8"/>
+                                                    <Setter TargetName="border" Property="BorderBrush" Value="#003C74"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- Close Button -->
+                    <Button Width="16" Height="16"
+                            Click="CloseButton_Click"
+                            Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#ECE9D8"/>
+                                <Setter Property="BorderBrush" Value="#003C74"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="0" ShadowDepth="1" 
+                                                                      Direction="315" Color="White" Opacity="0.8"/>
+                                                </Border.Effect>
+                                                <Grid>
+                                                    <Path Data="M 0,0 L 5,5 M 0,5 L 5,0" 
+                                                          Stroke="Black" 
+                                                          StrokeThickness="1.2"
+                                                          HorizontalAlignment="Center" 
+                                                          VerticalAlignment="Center"
+                                                          Margin="0,0,0,0"/>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#F6F4EC"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#D4D0C8"/>
+                                                    <Setter TargetName="border" Property="BorderBrush" Value="#003C74"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Menu Grid.Row="1" Background="#908E91">
+            <MenuItem Header="_Room" FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D">
+                <MenuItem Header="Server Selection" FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D"
+                          Command="{Binding ServerSelectionCommand}" />
+            </MenuItem>
+            <MenuItem Header="_Zone" FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D">
+                <MenuItem Header="Select Game Location" FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D"
+                          Command="{Binding GameLocationCommand}" />
+                <MenuItem Header="User Account" FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D"
+                          Command="{Binding UserAccountCommand}" />
+            </MenuItem>
+            <MenuItem Header="_Help" FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D">
+                <MenuItem Header="Inject Decal" 
+                          FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D"
+                          IsCheckable="True"
+                          IsChecked="{Binding InjectDecal, Mode=TwoWay}"/>
+                <MenuItem Header="Remember Server Selection" 
+                          FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D"
+                          IsCheckable="True"
+                          IsChecked="{Binding RememberServerSelection, Mode=TwoWay}"/>
+                <MenuItem Header="Manage Custom Servers" 
+                          FontStyle="Italic" FontWeight="Bold" Foreground="#1F235D"
+                          Command="{Binding ManageCustomServersCommand}"/>
+            </MenuItem>
+        </Menu>
+        <Image Grid.Row="2" x:Name="imgZoneHeader" Source="/Assets/ZONELOGO.bmp" HorizontalAlignment="Left" VerticalAlignment="Center" Height="60"/>
+        <Image Grid.Row="2" x:Name="imgBannerAd" Margin="120,0,0,0" 
+               anim:ImageBehavior.AnimatedSource="/Assets/BANNERAD.gif" VerticalAlignment="Center" HorizontalAlignment="Left" Height="42" />
+        <Image Grid.Row="3" x:Name="imgBackgroundImage" HorizontalAlignment="Left" Source="{Binding BackgroundImageSource}" Height="350px" Width="560px"></Image>
+        <ScrollViewer Grid.Row="3" Margin="216,30,189,173"
+                      Style="{StaticResource TransparentScrollViewer}"
+                      VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="txtDescription" FontFamily="Times New Roman" FontSize="12px" FontWeight="Bold" TextWrapping="Wrap" Text="{Binding ServerDescription}">
+            </TextBlock>
+        </ScrollViewer>
+        <Button Grid.Row="3"
+            Height="83"
+            Width="155"
+            Margin="339,175,146,14"
+            Style="{StaticResource ImageOnlyButton}"
+            Command="{Binding PlayCommand}"/>
+    </Grid>
+</Window>
+

@@ -1,0 +1,263 @@
+﻿<Window x:Class="ThwargZone.ServerSelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThwargZone"
+        xmlns:anim="https://github.com/whistyun/AnimatedImage.Wpf"
+        mc:Ignorable="d"
+        Title="ThwargZone - Server Selection" Height="800" Width="800"
+        WindowStyle="None"
+        ResizeMode="CanMinimize"
+        AllowsTransparency="False"
+        Icon="/Assets/ThwargLogo.ico">
+
+    <Grid MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        <!-- Background image -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/ac_mini_bg.gif" Stretch="UniformToFill" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200px"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header: MSN Gaming Zone Logo -->
+        <Image Grid.Row="0" Grid.Column="0"
+           Source="/Assets/ac_zlogo.gif" 
+           HorizontalAlignment="Left" 
+           VerticalAlignment="Center"
+           Margin="20,20,0,0"
+           Stretch="Uniform"
+           MaxHeight="60"/>
+
+        <!-- Header: Asheron's Call Logo -->
+        <Image Grid.Row="0" Grid.Column="1"
+               Source="/Assets/ac_ltype.gif" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center"
+               Margin="20,20,0,0"
+               Stretch="Uniform"
+               MaxHeight="60"/>
+
+        <!-- Underline for first row -->
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="2"
+                   Height="1" 
+                   Fill="#CC9900" 
+                   VerticalAlignment="Bottom" 
+                   Margin="0,0,0,0"/>
+
+        <!-- Header: Combined Logo -->
+        <Image x:Name="TipsImage"
+               Grid.Row="1" Grid.Column="0"
+               anim:ImageBehavior.AnimatedSource="/Assets/Combined.gif"
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center"
+               Margin="20,20,0,0"
+               Stretch="Uniform"
+               />
+
+        <!-- First Announcement -->
+        <Border Grid.Row="1" Margin="20,10,20,5" Padding="15" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Bird Icon -->
+                <Image Grid.Column="0" Width="40" Height="40" Source="/Assets/eyca01.gif" Margin="0,0,15,0" Stretch="Uniform"/>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Return to Dereth - Forever Free" 
+                               FontWeight="Bold" 
+                               FontSize="14" 
+                               Foreground="#FFFFCC" 
+                               TextDecorations="Underline"/>
+                    <TextBlock Text="After years of loud, noisy, complaining fans, Asheron's Call lives again. Thanks to passionate fans and community-driven emulation, players can once more explore Dereth exactly as they remember it - for free, forever. No subscriptions, no paywalls, just pure adventure. Whether you're rekindling old memories or discovering the magic for the first time, the world of Asheron's Call awaits, hosted on fully emulated servers maintained by the community that refused to let it fade away."
+                               FontSize="12" 
+                               Foreground="#CC9900" 
+                               TextWrapping="Wrap" 
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Header: Newsletter Logo -->
+        <Image Grid.Row="2" Grid.Column="0"
+           Source="/Assets/nwsltr.gif" 
+           HorizontalAlignment="Left" 
+           VerticalAlignment="Center"
+           Margin="20,20,0,0"
+           Stretch="Uniform"
+           />
+        
+        <!-- Second Announcement -->
+        <Border Grid.Row="2" Margin="20,5,20,10" Padding="15" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Crab Icon -->
+                <Image Grid.Column="0" Width="40" Height="40" Source="/Assets/eyca02.gif" Margin="0,0,15,0" Stretch="Uniform"/>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="AC Feedback Form" 
+                               FontWeight="Bold" 
+                               FontSize="14" 
+                               Foreground="#FFFFCC" 
+                               TextDecorations="Underline"/>
+                    <TextBlock Text="To help our player community better communicate all comments and concerns you might have regarding Asheron's Call, we have established a new online feedback form."
+                               FontSize="12" 
+                               Foreground="#CC9900" 
+                               TextWrapping="Wrap" 
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Server Selection Section -->
+        <Border Grid.Row="3" Margin="20,10,20,10" Padding="20" Grid.Column="1">
+            <StackPanel>
+                <TextBlock Text="Choose a World to Enter" 
+                           FontWeight="Bold" 
+                           FontSize="16" 
+                           Foreground="White" 
+                           Margin="0,0,0,10"/>
+                <Rectangle Grid.ColumnSpan="2" 
+                   Height="1"
+                   Fill="#CC9900"
+                   VerticalAlignment="Bottom" 
+                   Margin="0,5,0,0"/>
+
+                <TextBlock Text="If you are new, choose a world at the top of the list. Remember what world you enter -- your game character will live there!"
+                           FontSize="12" 
+                           Foreground="#CC9900" 
+                           TextWrapping="Wrap" 
+                           Margin="0,0,0,15"/>
+
+                <!-- Server List Header -->
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0"
+                               Text="Players " 
+                               FontSize="14" FontWeight="Bold"
+                               Foreground="#CC9900"/>
+                    <TextBlock Grid.Column="0" 
+                               Text="Game Worlds" 
+                               FontSize="14" FontWeight="Bold"
+                               Foreground="White"/>
+                    </StackPanel>
+
+                    <TextBlock Grid.Column="1" 
+                               Text="{Binding TotalPopulation, StringFormat='(Population: {0})'}" 
+                               FontSize="14" 
+                               Foreground="#CC9900"/>
+
+                    <!-- Golden line -->
+                    <Rectangle Grid.ColumnSpan="2" 
+                               Height="1" 
+                               Fill="#CC9900" 
+                               VerticalAlignment="Bottom" 
+                               Margin="0,5,0,0"/>
+                </Grid>
+
+                <!-- Server List -->
+                <ScrollViewer Height="200" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding Servers}" Padding="25,0,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,2,0,2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" 
+                                               Text="{Binding PlayerCount}" 
+                                               FontSize="12" 
+                                               Foreground="#CC9900" 
+                                               Width="30" 
+                                               HorizontalAlignment="Left"/>
+
+                                    <TextBlock Grid.Column="1" 
+                                               Text="{Binding DisplayName}" 
+                                               FontSize="12" 
+                                               Foreground="#FFFFCC" 
+                                               TextDecorations="Underline" 
+                                               Cursor="Hand"
+                                               MouseLeftButtonUp="Server_Click"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+
+        <!-- Footer Navigation -->
+        <StackPanel Grid.Row="5"  Grid.Column="1"
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+
+            <TextBlock Text="Game Help" 
+                       FontSize="12" 
+                       Foreground="#CC9900" 
+                       TextDecorations="Underline" 
+                       Cursor="Hand" 
+                       Margin="0,0,20,0"
+                       MouseLeftButtonUp="GameHelp_Click"/>
+
+            <TextBlock Text="Member Services" 
+                       FontSize="12" 
+                       Foreground="#CC9900" 
+                       TextDecorations="Underline" 
+                       Cursor="Hand" 
+                       Margin="0,0,20,0"
+                       MouseLeftButtonUp="MemberServices_Click"/>
+
+            <TextBlock Text="Subscription" 
+                       FontSize="12" 
+                       Foreground="#CC9900" 
+                       TextDecorations="Underline" 
+                       Cursor="Hand" 
+                       Margin="0,0,20,0"
+                       MouseLeftButtonUp="Subscription_Click"/>
+
+            <TextBlock Text="Website" 
+                       FontSize="12" 
+                       Foreground="#CC9900" 
+                       TextDecorations="Underline" 
+                       Cursor="Hand" 
+                       Margin="0,0,20,0"
+                       MouseLeftButtonUp="Website_Click"/>
+
+            <TextBlock Text="Exit" 
+                       FontSize="12" 
+                       Foreground="#CC9900" 
+                       TextDecorations="Underline" 
+                       Cursor="Hand"
+                       MouseLeftButtonUp="Exit_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+
+
+

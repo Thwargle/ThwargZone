@@ -1,0 +1,235 @@
+<Window x:Class="ThwargZone.AccountManagement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="User Account" Height="500" Width="400" MaxHeight="500" MaxWidth="400"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="False"
+        Icon="/Assets/1.ico">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Custom Title Bar -->
+        <Border Grid.Row="0" Background="#010880" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Icon and Title -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="5,0,0,0">
+                    <Image Source="/Assets/1.ico" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBlock Text="User Account" 
+                               Foreground="White" FontWeight="Bold" FontSize="12"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                
+                <!-- Window Buttons -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0,0,5,0">
+                    <!-- Minimize Button -->
+                    <Button Width="16" Height="16" Margin="2,0,0,0" Click="Minimize_Click" Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#ECE9D8"/>
+                                <Setter Property="BorderBrush" Value="#003C74"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="0" ShadowDepth="1" 
+                                                                      Direction="315" Color="White" Opacity="0.8"/>
+                                                </Border.Effect>
+                                                <Grid>
+                                                    <Rectangle Width="6" Height="2" Fill="Black" 
+                                                               VerticalAlignment="Center" Margin="0,1,0,0"/>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#F6F4EC"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#D4D0C8"/>
+                                                    <Setter TargetName="border" Property="BorderBrush" Value="#003C74"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    
+                    <!-- Close Button -->
+                    <Button Width="16" Height="16" Margin="2,0,0,0" Click="Close_Click" Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#ECE9D8"/>
+                                <Setter Property="BorderBrush" Value="#003C74"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="0" ShadowDepth="1" 
+                                                                      Direction="315" Color="White" Opacity="0.8"/>
+                                                </Border.Effect>
+                                                <Grid>
+                                                    <Path Data="M0,0 L6,6 M6,0 L0,6" Stroke="Black" StrokeThickness="1.2"
+                                                          HorizontalAlignment="Center" 
+                                                          VerticalAlignment="Center"
+                                                          Margin="0,0,0,0"/>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#F6F4EC"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#D4D0C8"/>
+                                                    <Setter TargetName="border" Property="BorderBrush" Value="#003C74"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <!-- Main Content with Background -->
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/CastleBackground.jpg" Stretch="UniformToFill" Opacity="0.2"/>
+            </Grid.Background>
+
+            <!-- Login Form -->
+            <Border Background="Transparent" 
+                    BorderBrush="Black" 
+                    BorderThickness="1" 
+                    CornerRadius="0"
+                    Width="350" 
+                    Height="250"
+                    Margin="0 15 0 0"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+
+                    <!-- Underline -->
+
+                    <!-- Welcome Message -->
+                    <TextBlock Grid.Row="2" 
+                               Text="Welcome to Asheron's Call! Please enter a username and password below."
+                               FontSize="12" TextAlignment="Center"
+                               Foreground="Black" 
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,20"/>
+
+                    <!-- Username -->
+                    <Grid Grid.Row="3" Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Column="0"
+                                   Text="Username:" 
+                                   FontSize="12" 
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,10,0"/>
+                        <TextBox x:Name="UsernameTextBox" 
+                                 Grid.Column="1"
+                                 FontSize="12"
+                                 Padding="5"
+                                 Height="30"
+                                 VerticalAlignment="Center"
+                                 Margin="0,0,15,0"/>
+                    </Grid>
+
+                    <!-- Password -->
+                    <Grid Grid.Row="4" Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Column="0"
+                                   Text="Password:" 
+                                   FontSize="12" 
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,10,0"/>
+                        <PasswordBox x:Name="PasswordBox" 
+                                     Grid.Column="1"
+                                     FontSize="12"
+                                     Padding="5"
+                                     Height="30"
+                                     VerticalAlignment="Center"
+                                     Margin="0,0,15,0"/>
+                        <TextBox x:Name="PasswordTextBox" 
+                                 Grid.Column="1"
+                                 FontSize="12"
+                                 Padding="5"
+                                 Height="30"
+                                 VerticalAlignment="Center"
+                                 Margin="0,0,15,0"
+                                 Visibility="Collapsed"/>
+                    </Grid>
+
+                    <!-- Show/Hide Password Checkbox -->
+                    <CheckBox x:Name="ShowPasswordCheckBox" 
+                              Grid.Row="5"
+                              Content="Hide/Show Password"
+                              FontSize="11"
+                              Foreground="Black"
+                              Margin="70,0,0,15"
+                              Checked="ShowPasswordCheckBox_Checked"
+                              Unchecked="ShowPasswordCheckBox_Unchecked"/>
+
+                </Grid>
+            </Border>
+            <!-- Bottom Navigation -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 0 15">
+                <Button Content="Cancel" Width="80" Height="25" Margin="10,0,10,0" 
+                    Click="Cancel_Click" Background="#CCCCCC" Foreground="Black" 
+                    FontWeight="Bold" BorderThickness="1" BorderBrush="Black"
+                    IsCancel="True"/>
+                <Button Content="Next" Width="80" Height="25" Margin="10,0,10,0" 
+                    Click="NextButton_Click" Background="#CCCCCC" Foreground="Black" 
+                    FontWeight="Bold" BorderThickness="1" BorderBrush="Black"
+                    IsDefault="True"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
