@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![ThwargZone Logo](Assets/ThwargLogo.ico)
+![ThwargZone Logo](ThwargZone/Assets/ThwargLogo.ico)
 
 **A nostalgic MSN Gaming Zone-style launcher for Asheron's Call**
 
